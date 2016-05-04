@@ -59,7 +59,7 @@ body {
   }
 }
 
-.recipe {
+.review {
   background: white;
   border-radius: 5px;
   margin-bottom: 40px;
@@ -91,11 +91,11 @@ body {
   }
 }
 
-#recipe_top {
+#review_top {
   margin-bottom: 50px;
 }
 
-#recipe_info, #ingredients, #directions {
+#review_info, #ingredients, #directions {
   background: white;
   @include box-shadow;
   min-height: 360px;
@@ -103,13 +103,13 @@ body {
   padding: 2em 8%;
 }
 
-.recipe_image {
+.review_image {
   max-width: 100%;
   border-radius: 5px;
   @include box-shadow;
 }
 
-#recipe_info {
+#review_info {
   h1 {
     font-size: 36px;
     font-weight: normal;

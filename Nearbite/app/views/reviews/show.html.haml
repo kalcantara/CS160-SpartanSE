@@ -1,0 +1,20 @@
+.main_content
+  #review_top.row
+    .col-md-4
+      = image_tag @review.image.url(:medium), class: "review_image"
+    .col-md-8
+      #review_info
+        %h1= @review.title
+        %p.description= @review.description
+        %p
+          Submitted by
+          = @review.user.email
+
+
+
+  .row
+    .col-md-12
+      = link_to "Back", root_path, class: "btn btn-default"
+      - if user_signed_in?
+        = link_to "Edit", edit_review_path, class: "btn btn-default"
+        = link_to "Delete", review_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"

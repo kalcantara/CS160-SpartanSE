@@ -1,4 +1,4 @@
-class review < ActiveRecord::Base
+class Review < ActiveRecord::Base
   belongs_to :user
   
   has_many :ingredients

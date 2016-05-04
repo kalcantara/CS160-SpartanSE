@@ -1,9 +1,9 @@
-class reviewsController < ApplicationController
+class ReviewsController < ApplicationController
   before_action :find_review, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @review = review.all.order("created_at DESC")
+    @review = Review.all.order("created_at DESC")
   end
 
   def show
@@ -49,7 +49,7 @@ class reviewsController < ApplicationController
     end
 
     def find_review
-      @review = review.find(params[:id])
+      @review = Review.find(params[:id])
     end
 
 end
