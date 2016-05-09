@@ -1,4 +1,4 @@
-class AddAttachmentImageToRecipes < ActiveRecord::Migration
+class AddAttachmentImageToReviews < ActiveRecord::Migration
   def self.up
     change_table :reviews do |t|
       t.attachment :image
