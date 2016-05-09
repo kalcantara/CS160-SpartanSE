@@ -9,6 +9,29 @@
         %p
           Submitted by
           = @review.user.email
+        %h2= "Comments"
+        %p
+          - @review.comments.each do |c|
+            = current_user.email 
+            = "wrote:" 
+            = c.body
+            %p
+        
+        %p
+        - if current_user
+          = form_for([@review, @review.comments.build]) do |f|
+            %div{:class => "field"}
+              = f.label :user
+              %p
+              - if current_user
+                = current_user.email
+            %p
+            %div{:class => "field"}
+              = f.label "Comment"
+              %p
+              = f.text_area :body
+            %div{:class => "actions"}
+              = f.submit
 
 
 
