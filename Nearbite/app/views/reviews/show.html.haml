@@ -9,6 +9,16 @@
         %p
           Submitted by
           = @review.user.email
+
+      = link_to "Back", root_path, class: "btn btn-default"
+      - if user_signed_in?
+        - if current_user.email == @review.user.email
+          = link_to "Edit", edit_review_path, class: "btn btn-default"
+          = link_to "Delete", review_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
+  .row
+    .col-md-4
+    .col-md-8
+      #review_info
         %h2= "Comments"
         %p
           - @review.comments.each do |c|
@@ -31,12 +41,3 @@
               = f.text_area :body
             %div{:class => "actions"}
               = f.submit
-
-
-
-  .row
-    .col-md-12
-      = link_to "Back", root_path, class: "btn btn-default"
-      - if user_signed_in?
-        = link_to "Edit", edit_review_path, class: "btn btn-default"
-        = link_to "Delete", review_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
