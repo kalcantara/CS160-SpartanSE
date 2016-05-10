@@ -15,6 +15,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    # @business = Business.find(params[:business_id])
     @review = current_user.reviews.build(review_params)
 
     if @review.save

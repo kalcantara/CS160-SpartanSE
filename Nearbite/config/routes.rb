@@ -4,5 +4,11 @@ Rails.application.routes.draw do
 	resources :comments
   end
 
-  root "reviews#index"
+  resources :businesses do
+    resources :reviews
+  end
+
+  resources :locations
+
+  root "businesses#index"
 end

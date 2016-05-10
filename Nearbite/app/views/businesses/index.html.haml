@@ -1,0 +1,34 @@
+.row
+  -@businesses.each do |business|
+    .col-md-4
+      .review
+        .image_wrapper
+          = link_to business do
+            = image_tag "cutlery.png"
+        %h2= link_to business.name, business
+
+-#%h1 Listing businesses
+-#
+-#%table
+-#  %thead
+-#    %tr
+-#      %th Name
+-#      %th Type
+-#      %th Location
+-#      %th
+-#      %th
+-#      %th
+-#
+-#  %tbody
+-#    - @businesses.each do |business|
+-#      %tr
+-#        %td= business.name
+-#        %td= business.type
+-#        %td= business.address
+-#        %td= link_to 'Show', business
+-#        %td= link_to 'Edit', edit_business_path(business)
+-#        %td= link_to 'Destroy', business, :method => :delete, :data => { :confirm => 'Are you sure?' }
+-#
+-#%br
+-#
+-#= link_to 'New Business', new_business_path

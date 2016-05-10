@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811215626) do
+ActiveRecord::Schema.define(version: 20160509171328) do
+
+  create_table "businesses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "category"
+    t.integer  "location_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "address"
+  end
+
+  add_index "businesses", ["location_id"], name: "index_businesses_on_location_id"
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "user"
+    t.text     "body"
+    t.integer  "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["review_id"], name: "index_comments_on_review_id"
 
   create_table "directions", force: :cascade do |t|
     t.text     "step"
@@ -31,6 +52,13 @@ ActiveRecord::Schema.define(version: 20150811215626) do
 
   add_index "ingredients", ["recipe_id"], name: "index_ingredients_on_recipe_id"
 
+  create_table "locations", force: :cascade do |t|
+    t.string   "city"
+    t.string   "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -41,6 +69,7 @@ ActiveRecord::Schema.define(version: 20150811215626) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "business_id"
   end
 
   create_table "users", force: :cascade do |t|
