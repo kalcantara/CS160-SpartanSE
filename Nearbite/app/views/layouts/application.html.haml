@@ -14,8 +14,8 @@
       
       - if user_signed_in?
         %ul.nav.navbar-nav.navbar-right
-          -#%li= link_to "New Review", new_review_path
           %li= link_to "Add a Business", new_business_path
+          %li= link_to "My Reviews", reviews_path
           %li= link_to "Sign Out", destroy_user_session_path, method: :delete
       - else
         %ul.nav.navbar-nav.navbar-right

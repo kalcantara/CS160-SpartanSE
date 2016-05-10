@@ -10,5 +10,7 @@ Rails.application.routes.draw do
 
   resources :locations
 
+  resources :reviews
+
   root "businesses#index"
 end

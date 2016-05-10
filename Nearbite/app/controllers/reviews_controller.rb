@@ -3,9 +3,8 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @review = Review.all.order("created_at DESC")
-    @business = Business.find(params[:id])
-
+    @reviews = current_user.reviews
+    # @review = Review.all.order("created_at DESC")
   end
 
   def show
@@ -36,6 +35,7 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    @review.business_id = params[:set_bus_id]
     if @review.update(review_params)
       redirect_to @review
     else
