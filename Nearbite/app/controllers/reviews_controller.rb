@@ -4,19 +4,25 @@ class ReviewsController < ApplicationController
 
   def index
     @review = Review.all.order("created_at DESC")
+    @business = Business.find(params[:id])
+
   end
 
   def show
-
+    # @business = Business.find(params[:id])
+    # @review = @business.reviews
+    @review = Review.find(params[:id])
   end
 
   def new
-    @review = current_user.reviews.build
+    # @review = current_user.reviews.build
+    @review = Review.new
+    @review.build_business
   end
 
   def create
-    # @business = Business.find(params[:business_id])
     @review = current_user.reviews.build(review_params)
+    @review.business_id = params[:set_bus_id]
 
     if @review.save
       redirect_to @review, notice: "Successfully created new review"
@@ -46,11 +52,10 @@ class ReviewsController < ApplicationController
   private
 
     def review_params
-      params.require(:review).permit(:title, :description, :image, ingredients_attributes: [:id, :name, :_destroy], directions_attributes: [:id, :step, :_destroy])
+      params.require(:review).permit(:title, :description, :image).merge(:user_id => current_user.id, :business_id => params[:business_id])
     end
 
     def find_review
       @review = Review.find(params[:id])
     end
-
 end

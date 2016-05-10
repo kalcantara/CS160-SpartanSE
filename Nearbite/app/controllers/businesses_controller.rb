@@ -5,19 +5,18 @@ class BusinessesController < ApplicationController
   # GET /businesses.json
   def index
     @businesses = Business.all
-
-
   end
 
   # GET /businesses/1
   # GET /businesses/1.json
   def show
-
+    @business = Business.find(params[:id])
   end
 
   # GET /businesses/new
   def new
     @business = Business.new
+    @business.reviews.build
   end
 
   # GET /businesses/1/edit

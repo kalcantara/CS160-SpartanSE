@@ -16,17 +16,19 @@
 
 = link_to 'Back', businesses_path, class: "btn btn-default"
 
-= link_to "Add a review", new_review_path(@business), class: "btn btn-default"
+= link_to "Add a review", new_review_path(@business), :business => @business, class: "btn btn-default"
+
+-#= link_to "Add a review", new_review_path, :action => 'create', :business => @business, class: "btn btn-default"
 
 - 3.times do
   %br
-= render "reviews/index"
--#- @business.reviews.each_slice(3) do |review|
--#  .row
--#    -@business.reviews.each do |review|
--#      .col-md-4
--#        .review
--#          .image_wrapper
--#            = link_to review do
--#              = image_tag review.image.url(:medium)
--#          %h2= link_to review.title, review
+-#= render "reviews/index"
+- @business.reviews.each_slice(3) do |review|
+  .row
+    -@business.reviews.each do |review|
+      .col-md-4
+        .review
+          .image_wrapper
+            = link_to review do
+              = image_tag review.image.url(:medium)
+          %h2= link_to review.title, review
