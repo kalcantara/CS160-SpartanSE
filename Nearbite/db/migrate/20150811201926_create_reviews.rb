@@ -8,7 +8,5 @@ class CreateReviews < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-
-    add_index :reviews, :business_id
   end
 end
