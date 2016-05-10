@@ -12,7 +12,7 @@
         %h2= "Comments"
         %p
           - @review.comments.each do |c|
-            = current_user.email 
+            = c.user
             = "wrote:" 
             = c.body
             %p
@@ -21,10 +21,9 @@
         - if current_user
           = form_for([@review, @review.comments.build]) do |f|
             %div{:class => "field"}
-              = f.label :user
+              = f.label "User"
               %p
-              - if current_user
-                = current_user.email
+              = f.text_field :user, :value => current_user.email, :readonly => "true"
             %p
             %div{:class => "field"}
               = f.label "Comment"
