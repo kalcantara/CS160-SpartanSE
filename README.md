@@ -1,4 +1,17 @@
-# CS160-SpartanSE
+## CS160-SpartanSE
 
+Nearbite is a real-time web application with a simple interface that allows users to browse restaurants based on community driven reviews.
 
-For our web application, we are going to have restaurant reviews. The user will be able to look up restaurants, and rate them by creating, editing, or deleting reviews
+## Live Demo
+https://damp-mountain-81541.herokuapp.com/
+
+## How to run
+Run the bash file
+```
+bash BuildApplication.sh
+```
+
+Open a browser and go to
+```
+localhost:3000
+```
