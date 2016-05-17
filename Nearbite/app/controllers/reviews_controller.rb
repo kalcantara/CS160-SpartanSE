@@ -4,17 +4,13 @@ class ReviewsController < ApplicationController
 
   def index
     @reviews = current_user.reviews
-    # @review = Review.all.order("created_at DESC")
   end
 
   def show
-    # @business = Business.find(params[:id])
-    # @review = @business.reviews
     @review = Review.find(params[:id])
   end
 
   def new
-    # @review = current_user.reviews.build
     @review = Review.new
     @review.build_business
   end
@@ -35,7 +31,6 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review.business_id = params[:set_bus_id]
     if @review.update(review_params)
       redirect_to @review
     else
@@ -52,7 +47,7 @@ class ReviewsController < ApplicationController
   private
 
     def review_params
-      params.require(:review).permit(:title, :description, :image).merge(:user_id => current_user.id, :business_id => params[:business_id])
+      params.require(:review).permit(:title, :description, :image, :business_id)
     end
 
     def find_review
